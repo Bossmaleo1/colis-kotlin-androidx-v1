@@ -1,13 +1,21 @@
 package com.Kcolis.android.connInscript
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.fragment.app.FragmentManager
 import com.Kcolis.android.R
+import com.Kcolis.android.appviews.Home
+import com.Kcolis.android.fragments.ProgressbarDialogFragment
 import com.Kcolis.android.model.Const
+import com.Kcolis.android.model.cache.SessionManager
 import com.Kcolis.android.utils.VolleySingleton
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
@@ -46,7 +54,13 @@ class Connexion : AppCompatActivity() {
         actionbar!!.title = "Kcolis"
 
         bouton_connexion!!.setOnClickListener {
-            connexion()
+
+            val mDialogView = LayoutInflater.from(this).inflate(R.layout.progressdialogfragment,null)
+            val dialogBuilder = AlertDialog.Builder(this).setView(mDialogView)
+            val alert = dialogBuilder.create()
+            alert.setCancelable(false)
+            alert.show()
+            connexion(alert)
         }
     }
 
@@ -74,7 +88,7 @@ class Connexion : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun connexion() {
+    private fun connexion(alert:AlertDialog) {
 
         val email_string = email?.text.toString()
         val password_string = password?.text.toString()
@@ -83,7 +97,17 @@ class Connexion : AppCompatActivity() {
                 Response.Listener<String> { response ->
                     try {
                         val obj = JSONObject(response)
-                        Toast.makeText(applicationContext,"Hello Wordld1"+response,Toast.LENGTH_LONG).show()
+                        if(obj.getInt("succes")===1) {
+                            alert.dismiss()
+                            val session = SessionManager(applicationContext)
+                            session.createLoginSession(obj.getInt("id"))
+                            val intent = Intent(applicationContext,Home::class.java)
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            applicationContext.startActivity(intent)
+                        }
+
+
+
                     }catch (e: JSONException){
                         e.printStackTrace()
                         Toast.makeText(applicationContext,"Hello Wordld2",Toast.LENGTH_LONG).show()
@@ -91,7 +115,8 @@ class Connexion : AppCompatActivity() {
                 },
             object : Response.ErrorListener{
                 override fun onErrorResponse(error: VolleyError?) {
-                    Toast.makeText(applicationContext,"Votre mot de passe ou votre email est incorrect",Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext,"Une erreur réseaux, veuillez revoir votre connexion internet",Toast.LENGTH_LONG).show()
+                    alert.dismiss()
                 }
             }){
             @Throws(AuthFailureError::class)

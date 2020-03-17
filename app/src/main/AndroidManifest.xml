@@ -22,12 +22,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".appviews.Home" android:screenOrientation="portrait">
-
+        <activity android:name=".appviews.Home" >
         </activity>
 
-        <activity android:name=".connInscript.Connexion" android:screenOrientation="portrait">
-
+        <activity android:name=".connInscript.Connexion" >
         </activity>
 
 
