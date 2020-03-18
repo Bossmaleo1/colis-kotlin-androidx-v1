@@ -16,6 +16,8 @@ import com.Kcolis.android.appviews.Home
 import com.Kcolis.android.fragments.ProgressbarDialogFragment
 import com.Kcolis.android.model.Const
 import com.Kcolis.android.model.cache.SessionManager
+import com.Kcolis.android.model.dao.DatabaseHandler
+import com.Kcolis.android.model.data.User
 import com.Kcolis.android.utils.VolleySingleton
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
@@ -54,7 +56,6 @@ class Connexion : AppCompatActivity() {
         actionbar!!.title = "Kcolis"
 
         bouton_connexion!!.setOnClickListener {
-
             val mDialogView = LayoutInflater.from(this).inflate(R.layout.progressdialogfragment,null)
             val dialogBuilder = AlertDialog.Builder(this).setView(mDialogView)
             val alert = dialogBuilder.create()
@@ -100,10 +101,35 @@ class Connexion : AppCompatActivity() {
                         if(obj.getInt("succes")===1) {
                             alert.dismiss()
                             val session = SessionManager(applicationContext)
+                            var etat : String
+                            if(obj.getString("etat").trim().length===0) {
+                                etat = "0 "
+
+                            } else {
+                                etat = obj.getString("etat")
+                            }
+                            Toast.makeText(applicationContext,"test succès !!"+etat,Toast.LENGTH_LONG).show()
                             session.createLoginSession(obj.getInt("id"))
+                            val user = User(obj.getInt("id"),
+                                            obj.getString("nom"),
+                                            obj.getString("prenom"),
+                                            obj.getString("datenaissance"),
+                                            obj.getString("sexe"),
+                                            obj.getString("email"),
+                                            obj.getString("photo"),
+                                            obj.getString("keypush"),//ici c'est le keypush, il va falloir l'ajouter sur le script php et ajouter libelle prob
+                                            obj.getString("telephone"),
+                                            obj.getString("langue"),
+                                            obj.getString("etat"),
+                                            obj.getString("pays"),
+                                            obj.getString("ville"))
+                            val database = DatabaseHandler(this,null)
+                            database.addUSER(user)
                             val intent = Intent(applicationContext,Home::class.java)
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                             applicationContext.startActivity(intent)
+                        } else {
+                            Toast.makeText(applicationContext,"Votre mot de passe ou adresse email est incorrecte !!",Toast.LENGTH_LONG).show()
                         }
 
 
