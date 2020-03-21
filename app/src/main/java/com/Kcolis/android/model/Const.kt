@@ -23,4 +23,8 @@ object  Const {
     const val KEY_TELEPHONE = "TELEPHONE"
     const val KEY_ETAT = "ETAT"
 
+    //request response for datepicker & timepicker
+    const val REQUEST_CODE: Int = 11
+    const val REQUEST_CODE_DEPART = 12
+    const val REQUEST_CODE_ARRIVEE = 13
 }

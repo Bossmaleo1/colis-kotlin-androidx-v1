@@ -28,6 +28,12 @@
         <activity android:name=".connInscript.Connexion" >
         </activity>
 
+        <activity android:name=".appviews.SearchTown" >
+        </activity>
+
+        <activity android:name=".appviews.AnnoncesList" >
+        </activity>
+
 
     </application>
 

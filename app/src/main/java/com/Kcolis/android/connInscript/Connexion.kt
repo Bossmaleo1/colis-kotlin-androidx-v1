@@ -43,13 +43,13 @@ class Connexion : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.connexion)
 
-        coordinatorLayout = findViewById(R.id.coordinatorLayout) as CoordinatorLayout
-        about = findViewById(R.id.about) as TextView
-        aboutblock = findViewById(R.id.aboutblock) as LinearLayout
-        passwordforget = findViewById(R.id.passforget)  as TextView
-        bouton_connexion = findViewById(R.id.connexion) as Button
+        coordinatorLayout = findViewById<CoordinatorLayout>(R.id.coordinatorLayout)
+        about = findViewById<TextView>(R.id.about)
+        aboutblock = findViewById<LinearLayout>(R.id.aboutblock)
+        passwordforget = findViewById<TextView>(R.id.passforget)
+        bouton_connexion = findViewById<Button>(R.id.connexion)
         email = findViewById<TextInputEditText>(R.id.email)
-        password = findViewById(R.id.password) as TextInputEditText
+        password = findViewById<TextInputEditText>(R.id.password)
 
         setSupportActionBar(toolbar)
         val actionbar = supportActionBar
@@ -139,11 +139,9 @@ class Connexion : AppCompatActivity() {
                         Toast.makeText(applicationContext,"Hello Wordld2",Toast.LENGTH_LONG).show()
                     }
                 },
-            object : Response.ErrorListener{
-                override fun onErrorResponse(error: VolleyError?) {
-                    Toast.makeText(applicationContext,"Une erreur réseaux, veuillez revoir votre connexion internet",Toast.LENGTH_LONG).show()
-                    alert.dismiss()
-                }
+            Response.ErrorListener {
+                Toast.makeText(applicationContext,"Une erreur réseaux, veuillez revoir votre connexion internet",Toast.LENGTH_LONG).show()
+                alert.dismiss()
             }){
             @Throws(AuthFailureError::class)
              override fun getParams():Map<String, String> {

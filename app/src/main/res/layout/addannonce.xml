@@ -197,8 +197,6 @@
                 style="@style/Widget.MaterialComponents.Button.Icon"
                 android:background="@color/colorPrimary"
                 android:layout_marginTop="5dp"
-                android:paddingBottom="15dp"
-                android:paddingTop="15dp"
                 android:textColor="@android:color/white"
                 />
 
@@ -386,8 +384,6 @@
                 android:text="AJOUTER"
                 android:background="@color/colorPrimary"
                 android:layout_marginTop="5dp"
-                android:paddingBottom="15dp"
-                android:paddingTop="15dp"
                 android:textColor="@android:color/white"
                 />
 

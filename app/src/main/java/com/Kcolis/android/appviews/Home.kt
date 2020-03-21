@@ -23,8 +23,16 @@ import com.Kcolis.android.model.Const
 import com.Kcolis.android.model.cache.SessionManager
 import com.Kcolis.android.model.dao.DatabaseHandler
 import com.Kcolis.android.model.data.User
+import com.Kcolis.android.utils.VolleySingleton
+import com.android.volley.AuthFailureError
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.VolleyError
+import com.android.volley.toolbox.StringRequest
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.connexion.*
+import org.json.JSONException
+import org.json.JSONObject
 
 class Home : AppCompatActivity() {
 
@@ -36,6 +44,7 @@ class Home : AppCompatActivity() {
     private var annonce_title_text: SpannableString? = null
     private var recherche_title_text: SpannableString? = null
     private var notification_title_text: SpannableString? = null
+    private var mCartItemCount: Int? = null
 
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -59,8 +68,9 @@ class Home : AppCompatActivity() {
         //bottomNavigationView!!.removeBadge(R.id.notification) // Remove badge
         //bottomNavigationView!!.getBadge(R.id.notification)!!.setNumber(10)
         val badge = bottomNavigationView!!.showBadge(R.id.notification)
-        badge!!.number = 4
+        badge!!.number = 0
         badge!!.badgeTextColor = Color.WHITE
+        bottomNavigationView!!.removeBadge(R.id.notification)
         /*val session = SessionManager(applicationContext)
         val databasemaleo = DatabaseHandler(this,null)
         val maleo = databasemaleo.getUser(session.getUserDetail().get(Const.Key_ID)!!.toInt())*/
@@ -76,6 +86,7 @@ class Home : AppCompatActivity() {
         menu!!.findItem(R.id.recherche).icon = Icon_recherche
         menu!!.findItem(R.id.recherche).title = recherche_title_text
 
+        CountNotification()
         /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             Icon_recherche!!.mutate().setColorFilter(applicationContext.getColor(R.color.colorPrimary),
                 PorterDuff.Mode.SRC_IN)
@@ -169,6 +180,7 @@ class Home : AppCompatActivity() {
         false
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu) : Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.menu_main,menu)
@@ -187,5 +199,45 @@ class Home : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    fun CountNotification() {
+
+        val session = SessionManager(applicationContext)
+        val databasemaleo = DatabaseHandler(this,null)
+        val user = databasemaleo.getUser(session.getUserDetail().get(Const.Key_ID)!!.toInt())
+
+        val stringRequest = object : StringRequest(
+            Request.Method.GET,Const.dns+"/colis/ColisApi/public/api/AfficherCountNotification?ID_USER="+user.ID,
+            Response.Listener<String> { response ->
+                try {
+                    val obj = JSONObject(response)
+                    mCartItemCount = obj.getInt("count_notification")
+
+                    if(mCartItemCount == 0){
+                        val badge = bottomNavigationView!!.showBadge(R.id.notification)
+                        bottomNavigationView!!.removeBadge(R.id.notification)
+                    } else {
+                        val badge = bottomNavigationView!!.showBadge(R.id.notification)
+                        badge!!.number = mCartItemCount as Int
+                        badge!!.badgeTextColor = Color.WHITE
+                    }
+
+
+                }catch (e: JSONException){
+                    e.printStackTrace()
+                }
+
+
+            },
+            Response.ErrorListener {  }){
+            @Throws(AuthFailureError::class)
+            override fun getParams():Map<String, String> {
+                val params = HashMap<String, String>()
+                return params
+            }
+        }
+
+        VolleySingleton.instance?.addToRequestQueue(stringRequest)
     }
 }
