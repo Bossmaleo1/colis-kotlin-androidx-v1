@@ -1,6 +1,5 @@
 package com.Kcolis.android.connInscript
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,19 +9,16 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.fragment.app.FragmentManager
 import com.Kcolis.android.R
 import com.Kcolis.android.appviews.Home
-import com.Kcolis.android.fragments.ProgressbarDialogFragment
 import com.Kcolis.android.model.Const
 import com.Kcolis.android.model.cache.SessionManager
 import com.Kcolis.android.model.dao.DatabaseHandler
 import com.Kcolis.android.model.data.User
-import com.Kcolis.android.utils.VolleySingleton
+import com.Kcolis.android.utils.MyApplication
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.Response
-import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.connexion.*
@@ -91,24 +87,22 @@ class Connexion : AppCompatActivity() {
 
     private fun connexion(alert:AlertDialog) {
 
-        val email_string = email?.text.toString()
-        val password_string = password?.text.toString()
+        val emailString = email?.text.toString()
+        val passwordString = password?.text.toString()
 
-        val stringRequest = object : StringRequest(Request.Method.GET,Const.dns+"/colis/ColisApi/public/api/connexion?email="+email_string+"&password="+password_string,
+        val stringRequest = object : StringRequest(Request.Method.GET,Const.dns+"/colis/ColisApi/public/api/connexion?email="+emailString+"&password="+passwordString,
                 Response.Listener<String> { response ->
                     try {
                         val obj = JSONObject(response)
                         if(obj.getInt("succes")===1) {
                             alert.dismiss()
                             val session = SessionManager(applicationContext)
-                            var etat : String
-                            if(obj.getString("etat").trim().length===0) {
-                                etat = "0 "
+                            val etat : String = if(obj.getString("etat").trim().length===0) {
+                                "0 "
 
                             } else {
-                                etat = obj.getString("etat")
+                                obj.getString("etat")
                             }
-                            Toast.makeText(applicationContext,"test succès !!"+etat,Toast.LENGTH_LONG).show()
                             session.createLoginSession(obj.getInt("id"))
                             val user = User(obj.getInt("id"),
                                             obj.getString("nom"),
@@ -150,7 +144,7 @@ class Connexion : AppCompatActivity() {
              }
         }
 
-        VolleySingleton.instance?.addToRequestQueue(stringRequest)
+        MyApplication.instance?.addToRequestQueue(stringRequest)
     }
 
 

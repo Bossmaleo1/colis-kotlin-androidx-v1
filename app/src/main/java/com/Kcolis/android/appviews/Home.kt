@@ -12,7 +12,6 @@ import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.Kcolis.android.R
 import com.Kcolis.android.connInscript.MainActivity
@@ -22,12 +21,10 @@ import com.Kcolis.android.fragments.Recherche
 import com.Kcolis.android.model.Const
 import com.Kcolis.android.model.cache.SessionManager
 import com.Kcolis.android.model.dao.DatabaseHandler
-import com.Kcolis.android.model.data.User
-import com.Kcolis.android.utils.VolleySingleton
+import com.Kcolis.android.utils.MyApplication
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.Response
-import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.connexion.*
@@ -238,6 +235,6 @@ class Home : AppCompatActivity() {
             }
         }
 
-        VolleySingleton.instance?.addToRequestQueue(stringRequest)
+        MyApplication.instance?.addToRequestQueue(stringRequest)
     }
 }

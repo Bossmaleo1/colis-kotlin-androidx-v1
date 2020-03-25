@@ -1,24 +1,18 @@
 package com.Kcolis.android.appviews
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.GestureDetector
 import android.view.MenuItem
-import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AnimationUtils
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -27,24 +21,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.Kcolis.android.R
 import com.Kcolis.android.adapter.SearchTownAdapter
 import com.Kcolis.android.model.Const
-import com.Kcolis.android.model.cache.SessionManager
-import com.Kcolis.android.model.dao.DatabaseHandler
 import com.Kcolis.android.model.data.TownItem
-import com.Kcolis.android.model.data.User
 import com.Kcolis.android.utils.CustomRecyclerViewItemTouchListener
-import com.Kcolis.android.utils.VolleySingleton
+import com.Kcolis.android.utils.MyApplication
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
-import kotlinx.android.synthetic.main.connexion.*
 import kotlinx.android.synthetic.main.connexion.toolbar
 import kotlinx.android.synthetic.main.searchtown.*
 import org.json.JSONArray
 import org.json.JSONException
-import org.json.JSONObject
 
 class SearchTown : AppCompatActivity() {
 
@@ -168,8 +157,8 @@ class SearchTown : AppCompatActivity() {
 
             },
             Response.ErrorListener {
-                Toast.makeText(applicationContext,"Une erreur réseaux, veuillez revoir votre connexion internet",Toast.LENGTH_LONG).show()
-                onSNACK(findViewById<CoordinatorLayout>(R.id.coordinatorLayout),applicationContext.getString(R.string.error_volley_servererror))
+                val snack = Snackbar.make(findViewById<CoordinatorLayout>(R.id.coordinatorLayout),applicationContext.getString(R.string.error_volley_servererror),Snackbar.LENGTH_LONG)
+                snack.show()
             }){
             @Throws(AuthFailureError::class)
             override fun getParams():Map<String, String> {
@@ -178,22 +167,9 @@ class SearchTown : AppCompatActivity() {
             }
         }
 
-        VolleySingleton.instance?.addToRequestQueue(stringRequest)
+        MyApplication.instance?.addToRequestQueue(stringRequest)
     }
 
-    fun onSNACK(view: View,libelle:String){
-        //Snackbar(view)
-        val snackbar = Snackbar.make(view, libelle,
-            Snackbar.LENGTH_LONG).setAction("Action", null)
-        snackbar.setActionTextColor(Color.BLUE)
-        val snackbarView = snackbar.view
-        snackbarView.setBackgroundColor(Color.LTGRAY)
-        val textView =
-            snackbarView.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
-        textView.setTextColor(Color.BLUE)
-        textView.textSize = 28f
-        snackbar.show()
-    }
 
 
 
