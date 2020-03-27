@@ -34,6 +34,15 @@
         <activity android:name=".appviews.AnnoncesList" >
         </activity>
 
+        <activity android:name=".appviews.DetailsAnnonces" >
+        </activity>
+
+        <activity android:name=".appviews.PaymentList" >
+        </activity>
+
+        <activity android:name=".appviews.Validation_Annonce" >
+        </activity>
+
 
     </application>
 

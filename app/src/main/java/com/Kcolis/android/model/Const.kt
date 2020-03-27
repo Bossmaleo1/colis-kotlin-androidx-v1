@@ -27,4 +27,8 @@ object  Const {
     const val REQUEST_CODE: Int = 11
     const val REQUEST_CODE_DEPART = 12
     const val REQUEST_CODE_ARRIVEE = 13
+
+    //const dialog
+    const val DATE_DIALOG_ID = 999
+
 }

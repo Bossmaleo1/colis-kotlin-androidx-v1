@@ -1,23 +1,17 @@
 package com.Kcolis.android.fragments
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.Kcolis.android.R
 import com.Kcolis.android.appviews.AnnoncesList
-import com.Kcolis.android.appviews.Home
 import com.Kcolis.android.appviews.SearchTown
 import com.Kcolis.android.model.Const
 import com.google.android.material.button.MaterialButton
@@ -33,7 +27,6 @@ class Recherche : Fragment() {
     private var dateannonce_error : TextInputLayout? = null
     private var arrivee_error : TextInputLayout? = null
     private var selectedDate : String? = null
-    //private mListener: onFragmentInteractionListener? = null
     private var idaeroportdepart : Int? = null
     private var idaeroportarrivee : Int? = null
     private var depart_error : TextInputLayout? = null
@@ -138,9 +131,7 @@ class Recherche : Fragment() {
         super.onDetach()
     }
 
-    interface onFragmentInteractionListener {
-            fun onFragmentInteraction(uri:Uri)
-    }
+
 
 
 

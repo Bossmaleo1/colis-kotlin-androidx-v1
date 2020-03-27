@@ -2,7 +2,6 @@ package com.Kcolis.android.appviews
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -16,12 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.Kcolis.android.R
 import com.Kcolis.android.adapter.AnnoncesListAdapter
-import com.Kcolis.android.adapter.SearchTownAdapter
 import com.Kcolis.android.model.Const
 import com.Kcolis.android.model.cache.SessionManager
 import com.Kcolis.android.model.dao.DatabaseHandler
 import com.Kcolis.android.model.data.Annonce
-import com.Kcolis.android.model.data.TownItem
 import com.Kcolis.android.utils.CustomRecyclerViewItemTouchListener
 import com.Kcolis.android.utils.MyApplication
 import com.android.volley.AuthFailureError
@@ -30,8 +27,8 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.annonceslist.*
 import kotlinx.android.synthetic.main.connexion.toolbar
-import kotlinx.android.synthetic.main.searchtown.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -77,18 +74,27 @@ class AnnoncesList : AppCompatActivity() {
         allUsersAdapter = data?.let { AnnoncesListAdapter(it) }
         recyclerView!!.adapter = allUsersAdapter
 
+        swipe_refresh_layout.setColorSchemeResources(R.color.colorPrimary);
+        swipe_refresh_layout.setOnRefreshListener {
+            swipe_refresh_layout.isRefreshing = false;
+        }
+
         recyclerView!!.addOnItemTouchListener(
             CustomRecyclerViewItemTouchListener(
                 recyclerView!!,
                 intArrayOf(R.id.user_first_name),
                 object : CustomRecyclerViewItemTouchListener.MyCustomClickListener {
                     override fun onBackupClick(view: View, position: Int) {
-                        /*val intent = Intent()
-                        intent.putExtra("ville", data!![position].Libelle)
-                        intent.putExtra("id",data!![position].ID)
-                        setResult(Activity.RESULT_OK,intent)
-                        finish()*/
-                        Toast.makeText(applicationContext,"Test du bossmaleo !!",Toast.LENGTH_LONG).show()
+
+
+                         /*Intent intent = new Intent(getApplicationContext(),DetailsAnnonces.class);
+                intent.putExtra("annonce",data.get(position));
+                startActivity(intent);*/
+
+                        val intent = Intent(applicationContext, DetailsAnnonces::class.java)
+                        intent.putExtra("annonce", data!![position])
+                        startActivity(intent)
+
                     }
 
                     override fun onBlockClick(view: View, position: Int) {
@@ -105,6 +111,7 @@ class AnnoncesList : AppCompatActivity() {
                 })
         )
     }
+
 
 
     override fun onOptionsItemSelected(item: MenuItem) : Boolean {
