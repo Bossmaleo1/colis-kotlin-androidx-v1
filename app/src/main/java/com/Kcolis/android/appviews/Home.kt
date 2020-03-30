@@ -190,7 +190,12 @@ class Home : AppCompatActivity() {
                 val session = SessionManager(applicationContext)
                 session.logoutUser()
                 val intent = Intent(applicationContext,MainActivity::class.java)
-                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+                return true
+            }
+
+            R.id.profil -> {
+                val intent = Intent(applicationContext,Profil::class.java)
                 startActivity(intent)
                 return true
             }

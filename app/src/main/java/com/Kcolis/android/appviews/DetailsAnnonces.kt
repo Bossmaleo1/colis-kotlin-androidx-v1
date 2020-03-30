@@ -87,9 +87,9 @@ class DetailsAnnonces : AppCompatActivity() {
         }
 
         block_title!!.setOnClickListener {
-            /*val intent = Intent(applicationContext,DetailsAnnonceur::class.java)
+            val intent = Intent(applicationContext,DetailsAnnonceur::class.java)
             intent.putExtra("annonce", annonce)
-            startActivity()*/
+            startActivity(intent)
         }
 
     }

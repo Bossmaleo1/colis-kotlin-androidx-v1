@@ -43,6 +43,18 @@
         <activity android:name=".appviews.Validation_Annonce" >
         </activity>
 
+        <activity android:name=".appviews.Profil" >
+        </activity>
+
+        <activity android:name=".appviews.Avis" >
+        </activity>
+
+        <activity android:name=".appviews.VerificationPieceIdentite" >
+        </activity>
+
+        <activity android:name=".appviews.DetailsAnnonceur" >
+        </activity>
+
 
     </application>
 
