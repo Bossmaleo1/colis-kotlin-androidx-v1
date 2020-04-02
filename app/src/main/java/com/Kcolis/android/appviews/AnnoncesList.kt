@@ -37,8 +37,6 @@ class AnnoncesList : AppCompatActivity() {
 
     private var recyclerView : RecyclerView? = null
     private var allUsersAdapter : AnnoncesListAdapter? = null
-    private var objectJson : JSONObject? = null
-    private var snackbar : Snackbar? = null
     private var database : DatabaseHandler? = null
     private var session : SessionManager? = null
     private var data : ArrayList<Annonce>? = null
@@ -76,7 +74,7 @@ class AnnoncesList : AppCompatActivity() {
 
         swipe_refresh_layout.setColorSchemeResources(R.color.colorPrimary);
         swipe_refresh_layout.setOnRefreshListener {
-            swipe_refresh_layout.isRefreshing = false;
+            swipe_refresh_layout.isRefreshing = false
         }
 
         recyclerView!!.addOnItemTouchListener(
