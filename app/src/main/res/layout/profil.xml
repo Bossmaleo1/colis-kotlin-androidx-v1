@@ -136,42 +136,6 @@
 
             </RelativeLayout>
 
-            <!--RelativeLayout
-                android:id="@+id/phone_block"
-                android:layout_below="@+id/mention_block"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/background_menu_message_public"
-                >
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    >
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/baseline_phone_black_24"
-                        android:tint="@color/colorPrimary"
-                        android:tintMode="@color/colorPrimary"
-                        android:layout_gravity="center"
-                        />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="+33654120158"
-                        android:textColor="@color/colorPrimary"
-                        android:layout_gravity="center"
-                        />
-
-                </LinearLayout>
-
-            </RelativeLayout-->
-
             <RelativeLayout
                 android:id="@+id/notation_block"
                 android:layout_below="@+id/mention_block"
@@ -264,6 +228,124 @@
                 </LinearLayout>
 
             </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/langue_block"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/notation_block"
+                android:layout_gravity="center"
+                android:background="@drawable/background_menu_message_public"
+                >
+
+                <LinearLayout
+                    android:id="@+id/block_langue_display"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/langue_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_translate_black_24"
+                        android:tint="@color/colorPrimary"
+                        android:tintMode="@color/colorPrimary"
+                        android:layout_gravity="center"
+                        />
+
+                    <TextView
+                        android:id="@+id/langue_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="En"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        />
+
+                </LinearLayout>
+
+                <!--ImageView
+                    android:id="@+id/edit_langue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_mode_edit_black_24dp"
+                    android:tint="@color/colorPrimary"
+                    android:layout_marginRight="20dp"
+                    android:tintMode="@color/colorPrimary"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    /-->
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/modenuit_block"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/langue_block"
+                android:layout_gravity="center"
+                android:background="@drawable/background_menu_message_public"
+                >
+
+                <LinearLayout
+                    android:id="@+id/modenuit_display"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/modenuit_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_brightness_3_black_24"
+                        android:tint="@color/colorPrimary"
+                        android:tintMode="@color/colorPrimary"
+                        android:layout_gravity="center"
+                        />
+
+                    <TextView
+                        android:id="@+id/modenuit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Mode Nuit"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        />
+
+                </LinearLayout>
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    app:useMaterialThemeColors="false"
+                    android:checked="false"
+                    android:id="@+id/edit_modenuit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    />
+
+                <!--ImageView
+                    android:id="@+id/edit_modenuit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_mode_edit_black_24dp"
+                    android:tint="@color/colorPrimary"
+                    android:layout_marginRight="20dp"
+                    android:tintMode="@color/colorPrimary"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    /-->
+            </RelativeLayout>
+
+
 
 
         </RelativeLayout>

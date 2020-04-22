@@ -94,8 +94,8 @@ class Connexion : AppCompatActivity() {
                 Response.Listener<String> { response ->
                     try {
                         val obj = JSONObject(response)
+                        alert.dismiss()
                         if(obj.getInt("succes")===1) {
-                            alert.dismiss()
                             val session = SessionManager(applicationContext)
                             val etat : String = if(obj.getString("etat").trim().length===0) {
                                 "0 "

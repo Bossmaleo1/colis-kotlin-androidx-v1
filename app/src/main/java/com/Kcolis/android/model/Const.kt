@@ -33,5 +33,7 @@ object  Const {
     const val REQUEST_CODE12 = 12
     const val REQUEST_CODE13 = 13
     const val REQUEST_CODE14 = 16
+    const val TABLE_DARK_MODE = "TABLE_DARK_MODE"
+    const val KEY_DARK_MODE = "DARK_MODE"
 
 }

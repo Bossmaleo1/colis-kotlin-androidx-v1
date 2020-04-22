@@ -166,7 +166,10 @@ class Home : AppCompatActivity() {
                 menu!!.findItem(R.id.notification).title = notification_title_text
                 menu!!.findItem(R.id.annonce).title = annonce_title_text
                 menu!!.findItem(R.id.recherche).title = recherche_title_text
-
+                val badge = bottomNavigationView!!.showBadge(R.id.notification)
+                badge!!.number = 0
+                badge!!.badgeTextColor = Color.WHITE
+                bottomNavigationView!!.removeBadge(R.id.notification)
 
                 val fragment = Notifications()
                 supportFragmentManager.beginTransaction().replace(R.id.frame_container, fragment, fragment.javaClass.simpleName)

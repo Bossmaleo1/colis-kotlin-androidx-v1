@@ -43,6 +43,7 @@ class NotificationAdapter(var data: ArrayList<NotificationItem>, var context: Co
     private var session : SessionManager? = null
     private var user : User? = null
     private var database : DatabaseHandler? = null
+    var card_boolean : Boolean? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         NotificationAdapter.MyViewHolder(
@@ -68,6 +69,18 @@ class NotificationAdapter(var data: ArrayList<NotificationItem>, var context: Co
         private val annuler = view.send2
         private val user_first_name = view.user_first_name93
         private val title_block = view.block93
+        private val validation_block = view.heure_arrivee_block93
+        private val telephone_block = view.telephone_block
+        private val poids_block = view.heure_depart_block93
+
+        private val view_widget1 = view.trace_separation93
+        private val view_widget2 = view.viewbis1893
+        private val view_widget3 = view.trace_separation293
+
+        private val view_widget4 = view.trace_separation_gone
+        private val view_widget5 = view.viewbis18_gone
+        private val view_widget6 = view.trace_separation2_gone
+        private val icon_message = view.icon_message93
 
         fun bind(notificationitem : NotificationItem,context: Context) {
             title.text = notificationitem.prenom_emmetteur+" "+notificationitem.nom_emmetteur
@@ -76,6 +89,46 @@ class NotificationAdapter(var data: ArrayList<NotificationItem>, var context: Co
             poids.text = notificationitem.nombre_kilo+" Kg"
             description.text = notificationitem.description
             telephone.text = notificationitem.telephone
+            if(notificationitem.Id_type ===1){
+                validation_block.visibility = View.GONE
+                telephone_block.visibility = View.GONE
+                poids_block.visibility = View.GONE
+                view_widget1.visibility = View.GONE
+                view_widget2.visibility = View.GONE
+                view_widget3.visibility = View.GONE
+                view_widget4.visibility = View.VISIBLE
+                view_widget5.visibility = View.VISIBLE
+                view_widget6.visibility = View.VISIBLE
+                //icon_message.setImageResource(R.drawable.baseline_timeline_black_24)
+                description.text = "Votre demande de transport de colis vient d'être valider"
+                    //poids.visibility = View.GONE
+            } else if(notificationitem.Id_type ===2) {
+                validation_block.visibility = View.GONE
+                telephone_block.visibility = View.GONE
+                poids_block.visibility = View.GONE
+                view_widget1.visibility = View.GONE
+                view_widget2.visibility = View.GONE
+                view_widget3.visibility = View.GONE
+                view_widget4.visibility = View.VISIBLE
+                view_widget5.visibility = View.VISIBLE
+                view_widget6.visibility = View.VISIBLE
+                icon_message.setImageResource(R.drawable.baseline_timeline_black_24)
+                description.text = "Vous pouvez suivre l'itineraire de votre colis ici"
+            } else if(notificationitem.Id_type == 3) {
+                validation_block.visibility = View.GONE
+                telephone_block.visibility = View.GONE
+                poids_block.visibility = View.GONE
+                view_widget1.visibility = View.GONE
+                view_widget2.visibility = View.GONE
+                view_widget3.visibility = View.GONE
+                view_widget4.visibility = View.VISIBLE
+                view_widget5.visibility = View.VISIBLE
+                view_widget6.visibility = View.VISIBLE
+                icon_message.setImageResource(R.drawable.baseline_timeline_black_24)
+                description.text = "Vous pouvez rendre compte de l'itineraire du colis"
+            }
+
+
             if(notificationitem.photo_emmetteur!= null) {
                 val uri = Uri.parse(Const.dns+"/colis/uploads/photo_de_profil/"+notificationitem.photo_emmetteur)
                 picture.setImageURI(uri)
@@ -93,7 +146,7 @@ class NotificationAdapter(var data: ArrayList<NotificationItem>, var context: Co
                 val database =  DatabaseHandler(context,null)
                 val session =  SessionManager(context)
                 val user = database.getUser((session.getUserDetail()[Const.Key_ID] ?: error("")).toInt())
-                Connexion_volley(alert,context,notificationitem.id.toString(),user!!.ID.toString(),message,"1",user!!.TELEPHONE,user!!.KEYPUSH,user!!.NOM,user!!.PRENOM,"")
+                Connexion_volley(alert,context,notificationitem.id.toString(),user!!.ID.toString(),message,"1",user!!.TELEPHONE,user_first_name,user!!.KEYPUSH,user!!.NOM,user!!.PRENOM,"")
             }
 
             annuler.setOnClickListener{
@@ -116,23 +169,20 @@ class NotificationAdapter(var data: ArrayList<NotificationItem>, var context: Co
             }
         }
 
-        private fun Connexion_volley(alert:AlertDialog,context: Context,id_validation:String,id_emmetteur: String,message : String,etat: String,phone: String/*,card : CardView*/, keypush : String,nom : String,prenom : String,message_fcm: String) {
+        private fun Connexion_volley(alert:AlertDialog, context: Context, id_validation:String, id_emmetteur: String, message : String, etat: String, phone: String,
+                                     card : CardView, keypush : String, nom : String, prenom : String, message_fcm: String) {
+            val url = Const.dns+"/colis/ColisApi/public/api/ValidationAnnulationDemandeExpedition?id_validation="+id_validation+"&id_emmeteur="+id_emmetteur+"&message="+message+"&etat="+etat
             val stringRequest = object : StringRequest(
-                Request.Method.GET,Const.dns+"/colis/ColisApi/public/api/ValidationAnnulationDemandeExpedition?id_validation="+id_validation+"&id_emmeteur="+id_emmetteur
-                        +"&message="+message+"&etat="+etat,
+                Request.Method.GET,url,
                 Response.Listener<String> { response ->
                     alert.dismiss()
                     //card.visibility = View.GONE
                     Toast.makeText(context,"Votre demande a ete valider avec succes !!",Toast.LENGTH_LONG).show()
-                    Toast.makeText(context,"Une erreur au niveau du serveur viens de survenir ", Toast.LENGTH_LONG).show()
-                    try {
-
-                    }catch (e: JSONException){
-                        e.printStackTrace()
-                    }
+                    card.visibility = View.GONE
                 },
                 Response.ErrorListener {
 
+                    Toast.makeText(context,"Une erreur au niveau du serveur viens de survenir ", Toast.LENGTH_LONG).show()
                     alert.dismiss()
                 }){
                 @Throws(AuthFailureError::class)

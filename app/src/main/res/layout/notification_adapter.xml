@@ -30,6 +30,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
                     android:id="@+id/iconetmachin"
                     >
 
@@ -41,7 +42,6 @@
                         android:layout_marginTop="4dp"
                         android:src="@drawable/ic_profile_colorier"
                         fresco:roundedCornerRadius="20dp"
-                        android:tooltipText="Consulter le profil du demandeur"
                         />
 
                     <LinearLayout
@@ -106,6 +106,7 @@
                     >
 
                     <ImageView
+                        android:id="@+id/icon_message93"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/baseline_speaker_notes_black_24"
@@ -128,7 +129,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/heure_depart_block"
+                    android:id="@+id/heure_depart_block93"
                     android:layout_below="@+id/ville_depart_block"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -161,7 +162,7 @@
 
                 <LinearLayout
                     android:id="@+id/telephone_block"
-                    android:layout_below="@+id/heure_depart_block"
+                    android:layout_below="@+id/heure_depart_block93"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -193,7 +194,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/heure_arrivee_block"
+                    android:id="@+id/heure_arrivee_block93"
                     android:layout_below="@+id/telephone_block"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -230,8 +231,8 @@
                 </LinearLayout>
 
                 <View
-                    android:layout_below="@+id/heure_arrivee_block"
-                    android:id="@+id/trace_separation"
+                    android:layout_below="@+id/heure_arrivee_block93"
+                    android:id="@+id/trace_separation93"
                     android:layout_width="match_parent"
                     android:layout_height="16dip"
                     android:layout_marginLeft="4dip"
@@ -240,21 +241,52 @@
                     />
 
                 <View
-                    android:layout_below="@+id/trace_separation"
-                    android:id="@+id/viewbis18"
+                    android:layout_below="@+id/trace_separation93"
+                    android:id="@+id/viewbis1893"
                     android:layout_width="match_parent"
                     android:layout_height="1dip"
                     android:background="@color/graycolor"
                     />
 
                 <View
-                    android:layout_below="@+id/viewbis18"
-                    android:id="@+id/trace_separation2"
+                    android:layout_below="@+id/viewbis1893"
+                    android:id="@+id/trace_separation293"
                     android:layout_width="match_parent"
                     android:layout_height="16dip"
                     android:layout_marginLeft="4dip"
                     android:layout_marginRight="4dip"
                     android:background="@android:color/white"
+                    />
+
+                <View
+                    android:layout_below="@+id/ville_depart_block"
+                    android:id="@+id/trace_separation_gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="16dip"
+                    android:layout_marginLeft="4dip"
+                    android:layout_marginRight="4dip"
+                    android:background="@android:color/white"
+                    android:visibility="gone"
+                    />
+
+                <View
+                    android:layout_below="@+id/trace_separation_gone"
+                    android:id="@+id/viewbis18_gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/graycolor"
+                    android:visibility="gone"
+                    />
+
+                <View
+                    android:layout_below="@+id/viewbis18"
+                    android:id="@+id/trace_separation2_gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="16dip"
+                    android:layout_marginLeft="4dip"
+                    android:layout_marginRight="4dip"
+                    android:background="@android:color/white"
+                    android:visibility="gone"
                     />
 
 

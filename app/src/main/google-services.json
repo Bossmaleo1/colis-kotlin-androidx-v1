@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "35874876499",
+    "firebase_url": "https://kcolis-e7d44.firebaseio.com",
+    "project_id": "kcolis-e7d44",
+    "storage_bucket": "kcolis-e7d44.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35874876499:android:185b087e8ac3053dbb2aa6",
+        "android_client_info": {
+          "package_name": "com.kcolis.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "35874876499-s0pbbm92kfv53mp4923938rn1v7msgt8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5RIrJE_5okHbqIAI6allUqxaEnz4NdMc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "35874876499-s0pbbm92kfv53mp4923938rn1v7msgt8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

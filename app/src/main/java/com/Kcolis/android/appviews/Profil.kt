@@ -44,6 +44,14 @@ class Profil : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        database = DatabaseHandler(applicationContext,null)
+        session = SessionManager(applicationContext)
+        val dark_mode_item = database!!.getDARKMODE()
+        if(dark_mode_item=="1") {
+            setTheme(R.style.AppDarkTheme)
+        } else {
+            setTheme(R.style.AppTheme)
+        }
         setContentView(R.layout.profil)
 
         setSupportActionBar(toolbar)
@@ -52,8 +60,7 @@ class Profil : AppCompatActivity() {
         actionbar!!.setDisplayHomeAsUpEnabled(true)
         actionbar!!.setDisplayShowHomeEnabled(true)
 
-        database = DatabaseHandler(applicationContext,null)
-        session = SessionManager(applicationContext)
+
         user = database!!.getUser((session!!.getUserDetail()[Const.Key_ID] ?: error("")).toInt())
 
         collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar)
@@ -120,5 +127,10 @@ class Profil : AppCompatActivity() {
         setResult(Activity.RESULT_OK,intent)
         finish()
     }
+
+    fun DarkMode(maleoIcon: Drawable) {
+
+    }
+
 
 }

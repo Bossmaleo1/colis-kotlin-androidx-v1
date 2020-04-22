@@ -1,11 +1,13 @@
 package com.Kcolis.android.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -15,11 +17,15 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.Kcolis.android.R
 import com.Kcolis.android.adapter.NotificationAdapter
+import com.Kcolis.android.appviews.DetailsAnnonces
+import com.Kcolis.android.appviews.Itinerance
+import com.Kcolis.android.appviews.ItineranceValidation
 import com.Kcolis.android.model.Const
 import com.Kcolis.android.model.cache.SessionManager
 import com.Kcolis.android.model.dao.DatabaseHandler
 import com.Kcolis.android.model.data.Annonce
 import com.Kcolis.android.model.data.NotificationItem
+import com.Kcolis.android.utils.CustomRecyclerViewItemTouchListener
 import com.Kcolis.android.utils.MyApplication
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
@@ -60,11 +66,43 @@ class Notifications : Fragment() {
         data = ArrayList<NotificationItem>()
 
         recyclerView!!.layoutManager = LinearLayoutManager(activity)
-        recyclerView!!.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
+        //recyclerView!!.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
         recyclerView!!.itemAnimator = DefaultItemAnimator()
         allUsersAdapter = activity?.let { data?.let { it1 -> NotificationAdapter(it1, it) } }
         recyclerView!!.adapter = allUsersAdapter
         AffichageNotification(activity!!)
+
+        recyclerView!!.addOnItemTouchListener(
+            CustomRecyclerViewItemTouchListener(
+                recyclerView!!,
+                intArrayOf(R.id.user_first_name),
+                object : CustomRecyclerViewItemTouchListener.MyCustomClickListener {
+                    override fun onBackupClick(view: View, position: Int) {
+                    }
+
+                    override fun onBlockClick(view: View, position: Int) {
+                        //Toast.makeText(view.context, "Block action on position = " + position, Toast.LENGTH_LONG).show()
+                       // Toast.makeText(activity,"Test du bossmaleo !!",Toast.LENGTH_LONG).show()
+                    }
+
+                    override fun onClick(view: View, position: Int) {
+                        if(data!![position].Id_type===2) {
+                            val intent = Intent(activity, Itinerance::class.java)
+                            intent.putExtra("notification", data!![position])
+                            startActivity(intent)
+                        } else if (data!![position].Id_type===3){
+                            val intent = Intent(activity, ItineranceValidation::class.java)
+                            intent.putExtra("notification", data!![position])
+                            startActivity(intent)
+                        }
+                    }
+
+                    override fun onLongClick(view: View, position: Int) {
+                        //Toast.makeText(view.context, "Long click action on position = " + position, Toast.LENGTH_LONG).show()
+                        //Toast.makeText(activity,"Test du bossmaleo !!",Toast.LENGTH_LONG).show()
+                    }
+                })
+        )
 
         return  inflatedView
     }
@@ -95,20 +133,26 @@ class Notifications : Fragment() {
                 val reponses : JSONArray = JSONArray(response)
                 try {
                     for (i in 0 until  reponses.length()){
+
                         val objectJson = reponses.getJSONObject(i)
-                        val notificationItem  = NotificationItem(objectJson.getInt("id"),objectJson.getString("description")
-                            ,objectJson.getString("date_validation")
-                            ,objectJson.getString("statut_validation")
-                            ,objectJson.getString("nombre_kilo")
-                            ,objectJson.getString("id_emmeteur")
-                            ,objectJson.getString("id_annonce")
-                            ,objectJson.getString("nom_emmeteur")
-                            ,objectJson.getString("prenom_emmeteur")
-                            ,objectJson.getString("photo_emmeteur")
-                            ,objectJson.getString("phone_emmeteur")
-                            ,objectJson.getString("keypush_emmeteur"))
+                        val notificationItem = NotificationItem(
+                                objectJson.getInt("id"), objectJson.getString("description")
+                                , objectJson.getString("date_validation")
+                                , objectJson.getString("statut_validation")
+                                , objectJson.getString("nombre_kilo")
+                                , objectJson.getString("id_emmeteur")
+                                , objectJson.getString("id_annonce")
+                                , objectJson.getString("nom_emmeteur")
+                                , objectJson.getString("prenom_emmeteur")
+                                , objectJson.getString("photo_emmeteur")
+                                , objectJson.getString("phone_emmeteur")
+                                , objectJson.getString("keypush_emmeteur")
+                                , objectJson.getInt("Id_type")
+                            )
                         data!!.add(notificationItem)
-                        }
+
+
+                    }
 
                 }catch (e: JSONException){
                     e.printStackTrace()

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbarlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+            android:layout_below="@+id/appbarlayout"
+            android:background="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/graycolor"
+        android:padding="10dp"
+        >
+
+        <RelativeLayout
+            android:id="@+id/item_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/background_menu_message_public"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/block1"
+                >
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/iconetmachin"
+                    >
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/icon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="4dp"
+                        android:src="@drawable/ic_profile_colorier"
+                        fresco:roundedCornerRadius="20dp"
+                        />
+
+                    <LinearLayout
+                        android:id="@+id/block93"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_toRightOf="@id/icon"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="4dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/title93"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/title1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="10dp"
+                            />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+                <View
+                    android:layout_below="@+id/iconetmachin"
+                    android:id="@+id/viewbis3"
+                    android:layout_width="match_parent"
+                    android:layout_height="6dip"
+                    android:layout_marginLeft="4dip"
+                    android:layout_marginRight="4dip"
+                    android:background="@android:color/transparent"
+                    />
+
+
+                <View
+                    android:layout_below="@+id/viewbis3"
+                    android:id="@+id/ville_depart"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/graycolor"
+                    />
+
+
+
+                <LinearLayout
+                    android:id="@+id/ville_depart_block"
+                    android:layout_below="@+id/ville_depart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/icon_message93"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_check_circle_black_36"
+                        android:tint="@color/colorPrimary"
+                        android:layout_gravity="center"
+                        />
+
+
+
+                    <TextView
+                        android:id="@+id/contenu93"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_gravity="center"
+                        />
+
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_below="@+id/heure_arrivee_block93"
+                    android:id="@+id/trace_separation93"
+                    android:layout_width="match_parent"
+                    android:layout_height="16dip"
+                    android:layout_marginLeft="4dip"
+                    android:layout_marginRight="4dip"
+                    android:background="@android:color/white"
+                    />
+
+                <View
+                    android:layout_below="@+id/trace_separation93"
+                    android:id="@+id/viewbis1893"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/graycolor"
+                    />
+
+                <View
+                    android:layout_below="@+id/viewbis1893"
+                    android:id="@+id/trace_separation293"
+                    android:layout_width="match_parent"
+                    android:layout_height="16dip"
+                    android:layout_marginLeft="4dip"
+                    android:layout_marginRight="4dip"
+                    android:background="@android:color/white"
+                    />
+
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/step_block1"
+            android:layout_below="@+id/item_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="15sp"
+                android:background="@drawable/rounded_textview"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:id="@+id/step_1"/>
+
+            <View
+                android:layout_below="@+id/step_1"
+                android:id="@+id/step_view_1"
+                android:layout_width="1dip"
+                android:layout_height="60dp"
+                android:background="@color/greencolor2"
+                android:layout_marginTop="5dip"
+                android:layout_marginLeft="12dip" />
+
+
+            <LinearLayout
+                android:id="@+id/lieux_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/step_1"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_place_black_24"
+                    android:tint="@color/greencolor2"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/rdv1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/greencolor2"
+                    android:text="Rdv de départ : lieux 1 " />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lieux_1"
+                android:background="@drawable/background_menu_message"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:padding="10dp"
+                >
+                <TextView
+                    android:id="@+id/connexion"
+                    android:layout_below="@+id/valider_lieux1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VALIDER"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@android:color/white"
+                    />
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
