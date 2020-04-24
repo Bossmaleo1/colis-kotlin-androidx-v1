@@ -6,7 +6,9 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.Kcolis.android.R
@@ -24,6 +26,7 @@ class Itinerance : AppCompatActivity() {
     private var date_user1: TextView? = null
     private var message1 : TextView? = null
     private var picture: SimpleDraweeView? = null
+    private var noter_expediteur : RelativeLayout? = null
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,9 +43,10 @@ class Itinerance : AppCompatActivity() {
         date_user1 = findViewById(R.id.title1)
         picture = findViewById(R.id.icon)
         message1 = findViewById(R.id.contenu93)
+        noter_expediteur = findViewById(R.id.noter_expediteur)
 
         notificationitem = intent.getParcelableExtra("notification")
-        nom_user1!!.text = notificationitem!!.prenom_emmetteur+""+notificationitem!!.nom_emmetteur
+        nom_user1!!.text = notificationitem!!.prenom_emmetteur+" "+notificationitem!!.nom_emmetteur
         date_user1!!.text = notificationitem!!.date_validation
         if(notificationitem!!.photo_emmetteur!= null) {
             val uri = Uri.parse(Const.dns+"/colis/uploads/photo_de_profil/"+notificationitem!!.photo_emmetteur)
@@ -51,6 +55,11 @@ class Itinerance : AppCompatActivity() {
             picture!!.setImageResource(R.drawable.ic_profile_colorier)
         }
         message1!!.text = "Votre demande de transport de colis vient d'être valider"
+
+        noter_expediteur!!.setOnClickListener {
+            val intent = Intent(applicationContext,Avis::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem) : Boolean {

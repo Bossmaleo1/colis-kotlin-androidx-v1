@@ -195,84 +195,328 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/step_block1"
+            android:id="@+id/item_2"
             android:layout_below="@+id/item_1"
+            android:background="@drawable/background_menu_message_public"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             >
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1"
-                android:textSize="15sp"
-                android:background="@drawable/rounded_textview"
-                android:textColor="@android:color/white"
-                android:gravity="center"
-                android:id="@+id/step_1"/>
-
-            <View
-                android:layout_below="@+id/step_1"
-                android:id="@+id/step_view_1"
-                android:layout_width="1dip"
-                android:layout_height="60dp"
-                android:background="@color/greencolor2"
-                android:layout_marginTop="5dip"
-                android:layout_marginLeft="12dip" />
-
-
-            <LinearLayout
-                android:id="@+id/lieux_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/step_1"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_place_black_24"
-                    android:tint="@color/greencolor2"
-                    android:layout_gravity="center" />
-
-                <TextView
-                    android:id="@+id/rdv1"
+                <RelativeLayout
+                    android:id="@+id/step_block1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:layout_gravity="center"
-                    android:textColor="@color/greencolor2"
-                    android:text="Rdv de départ : lieux 1 " />
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    >
 
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textSize="15sp"
+                        android:background="@drawable/rounded_textview_expedition"
+                        android:textColor="@android:color/white"
+                        android:gravity="center"
+                        android:id="@+id/step_1"/>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+                    <View
+                        android:layout_below="@+id/step_1"
+                        android:id="@+id/step_view_1"
+                        android:layout_width="1dip"
+                        android:layout_height="30dp"
+                        android:background="@color/colorPrimary"
+                        android:layout_marginTop="5dip"
+                        android:layout_marginLeft="12dip" />
+
+
+                     <LinearLayout
+                        android:id="@+id/lieux_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/step_1"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/baseline_place_black_24"
+                            android:tint="@color/colorPrimary"
+                            android:layout_gravity="center" />
+
+                        <TextView
+                            android:id="@+id/rdv1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:layout_gravity="center"
+                            android:textColor="@color/colorPrimary"
+                            android:text="Rdv de départ : lieux 1 " />
+
+
+                     </LinearLayout>
+
+
+
+
+                </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/step_block2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/lieux_1"
-                android:background="@drawable/background_menu_message"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:padding="10dp"
+                android:layout_below="@+id/step_block1"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
                 >
+
                 <TextView
-                    android:id="@+id/connexion"
-                    android:layout_below="@+id/valider_lieux1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="VALIDER"
-                    android:layout_gravity="center_horizontal"
+                    android:text="2"
+                    android:textSize="15sp"
+                    android:background="@drawable/rounded_textview_expedition"
                     android:textColor="@android:color/white"
-                    />
-            </LinearLayout>
+                    android:gravity="center"
+                    android:id="@+id/step_2"/>
+
+                <View
+                    android:layout_below="@+id/step_2"
+                    android:id="@+id/step_view_2"
+                    android:layout_width="1dip"
+                    android:layout_height="30dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_marginTop="5dip"
+                    android:layout_marginLeft="12dip" />
+
+                <LinearLayout
+                    android:id="@+id/lieux_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/step_2"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_flight_takeoff_black_24"
+                        android:tint="@color/colorPrimary"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/rdv2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_gravity="center"
+                        android:textColor="@color/colorPrimary"
+                        android:text="Le colis vient de quitter Libreville" />
+
+
+                </LinearLayout>
+
+
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/step_block3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/step_block2"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3"
+                    android:textSize="15sp"
+                    android:background="@drawable/rounded_textview_expedition"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:id="@+id/step_3"/>
+
+                <View
+                    android:layout_below="@+id/step_3"
+                    android:id="@+id/step_view_3"
+                    android:layout_width="1dip"
+                    android:layout_height="30dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_marginTop="5dip"
+                    android:layout_marginLeft="12dip" />
+
+                <LinearLayout
+                    android:id="@+id/lieux_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/step_3"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_flight_land_black_24"
+                        android:tint="@color/colorPrimary"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/rdv3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_gravity="center"
+                        android:textColor="@color/colorPrimary"
+                        android:text="Le colis est arrivé à Brazzaville" />
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/step_block4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/step_block3"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    android:textSize="15sp"
+                    android:background="@drawable/rounded_textview_expedition"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:id="@+id/step_4"/>
+
+                <View
+                    android:layout_below="@+id/step_4"
+                    android:id="@+id/step_view_4"
+                    android:layout_width="1dip"
+                    android:layout_height="30dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_marginTop="5dip"
+                    android:layout_marginLeft="12dip" />
+
+
+                <LinearLayout
+                    android:id="@+id/lieux_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/step_4"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_place_black_24"
+                        android:tint="@color/colorPrimary"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/rdv4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_gravity="center"
+                        android:textColor="@color/colorPrimary"
+                        android:text="Rdv d'arrivée : lieux 2" />
+
+
+                </LinearLayout>
+
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/step_block5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:paddingBottom="10dp"
+                android:layout_below="@+id/step_block4">
+
+                <ImageView
+                    android:id="@+id/step_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_check_circle_black_36"
+                    android:tint="@color/colorPrimary"
+                    android:layout_gravity="center" />
+
+                <LinearLayout
+                    android:id="@+id/lieux_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/step_5"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/rdv5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_gravity="center"
+                        android:textColor="@color/colorPrimary"
+                        android:text="Le colis a été livré" />
+
+
+                </LinearLayout>
+            </RelativeLayout>
 
 
 
         </RelativeLayout>
 
+            <RelativeLayout
+                android:id="@+id/noter_expediteur"
+                android:layout_below="@+id/item_2"
+                android:background="@drawable/background_menu_message_public"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                >
+
+
+
+                    <TextView
+                        android:id="@+id/valider_text"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="Noter votre expediteur"
+                        android:paddingBottom="20dp"
+                        android:paddingTop="15dp"
+                        />
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_star_black_18"
+                        android:layout_centerInParent="true"
+                        android:layout_toRightOf="@+id/valider_text"
+                        android:tint="@color/primarygraydark"
+                        android:layout_marginLeft="5dp"
+                        />
+
+            </RelativeLayout>
 
     </RelativeLayout>
 

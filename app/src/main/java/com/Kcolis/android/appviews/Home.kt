@@ -51,7 +51,7 @@ class Home : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
         val actionbar = supportActionBar
-        actionbar!!.title = "Kcolis"
+        actionbar!!.title = "Yamba"
 
         bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView!!.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
@@ -160,7 +160,7 @@ class Home : AppCompatActivity() {
                 menu!!.findItem(R.id.recherche).icon = Icon_recherche
                 menu!!.findItem(R.id.annonce).icon = Icon_annonce
 
-                annonce_title_text!!.setSpan(ForegroundColorSpan(applicationContext.getColor(R.color.item_name)),0,notification_title_text!!.length,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                annonce_title_text!!.setSpan(ForegroundColorSpan(applicationContext.getColor(R.color.item_name)),0,annonce_title_text!!.length,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 recherche_title_text!!.setSpan(ForegroundColorSpan(applicationContext.getColor(R.color.item_name)),0,recherche_title_text!!.length,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
                 menu!!.findItem(R.id.notification).title = notification_title_text

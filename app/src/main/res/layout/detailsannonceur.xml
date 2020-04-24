@@ -180,6 +180,7 @@
                 android:background="@drawable/background_menu_message_public"
                 >
                 <LinearLayout
+                    android:id="@+id/notation_sous_block"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"

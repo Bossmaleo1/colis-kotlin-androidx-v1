@@ -64,6 +64,9 @@
         <activity android:name=".appviews.ItineranceValidation" >
         </activity>
 
+        <activity android:name=".appviews.ListAvis" >
+        </activity>
+
 
 
     </application>
