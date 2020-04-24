@@ -268,17 +268,6 @@
 
                 </LinearLayout>
 
-                <!--ImageView
-                    android:id="@+id/edit_langue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_mode_edit_black_24dp"
-                    android:tint="@color/colorPrimary"
-                    android:layout_marginRight="20dp"
-                    android:tintMode="@color/colorPrimary"
-                    android:layout_centerInParent="true"
-                    android:layout_alignParentRight="true"
-                    /-->
             </RelativeLayout>
 
             <RelativeLayout

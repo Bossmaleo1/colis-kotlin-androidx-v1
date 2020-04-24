@@ -39,6 +39,7 @@ class Profil : AppCompatActivity() {
     private var verification_piece_icon: ImageView? = null
     private var verification_piece_text: TextView? = null
     private var piece_identite_icon_failed: Drawable? = null
+    private var block_notation: RelativeLayout? = null
 
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -66,6 +67,7 @@ class Profil : AppCompatActivity() {
         collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar)
         mention_icon = findViewById(R.id.mention_icon)
         draweeView = findViewById(R.id.my_image_view)
+        block_notation = findViewById(R.id.notationimage_block)
         collapsingToolbarLayout!!.title = user!!.PRENOM+" "+user!!.NOM
         collapsingToolbarLayout!!.setContentScrimColor(applicationContext.getColor(R.color.colorPrimary))
 
@@ -88,13 +90,14 @@ class Profil : AppCompatActivity() {
         verification_piece_text!!.setTextColor(resources.getColor(R.color.colorError))
         verification_piece_text!!.text = "Faites verifier votre piece d'identite"
 
-        notation_block!!.setOnClickListener {
-            val intent = Intent(applicationContext,Avis::class.java)
-            startActivity(intent)
-        }
 
         piece_identite_block!!.setOnClickListener {
             val intent = Intent(applicationContext,VerificationPieceIdentite::class.java)
+            startActivity(intent)
+        }
+
+        block_notation!!.setOnClickListener {
+            val intent = Intent(applicationContext,ListAvis::class.java)
             startActivity(intent)
         }
 
