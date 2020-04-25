@@ -399,7 +399,6 @@ class AddAnnonce : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        Toast.makeText(activity, requestCode.toString()+" "+data!!.getStringExtra("selectedTime"),Toast.LENGTH_LONG).show()
 
         if (requestCode == Const.REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             selectedDate = data!!.getStringExtra("selectedDate")
@@ -413,11 +412,7 @@ class AddAnnonce : Fragment() {
             ville_depart!!.setText(data!!.getStringExtra("ville"))
             idaeroportdepart = data!!.getIntExtra("id",0)
 
-        } /*else if (requestCode == REQUEST_CODE12 && resultCode == Activity.RESULT_OK) {
-            selectedDate1 = data!!.getStringExtra("selectedTime")
-            heure_depart!!.setText(selectedDate1+":00")
-
-        }*/
+        }
 
         if(requestCode == REQUEST_CODE13 && resultCode == Activity.RESULT_OK && data!!.getStringExtra("selectedTime") != null) {
             selectedDate2 = data!!.getStringExtra("selectedTime")
@@ -435,33 +430,6 @@ class AddAnnonce : Fragment() {
             date_annonce2!!.setText(data!!.getStringExtra("selectedDate"))
         }
 
-
-
-        /*if(requestCode == Const.REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            selectedDate = data!!.getStringExtra("selectedDate")
-            date_annonce!!.setText(selectedDate)
-
-        }*/
-
-
-
-        /*else if (requestCode == Const.REQUEST_CODE12 && resultCode == Activity.RESULT_OK) {
-            selectedDate1 = data!!.getStringExtra("selectedTime")
-            heure_depart!!.setText(selectedDate1+":00")
-
-        } else if (requestCode == Const.REQUEST_CODE13 && resultCode == Activity.RESULT_OK) {
-            selectedDate2 = data!!.getStringExtra("selectedTime")
-            heure_darrivee!!.setText(data!!.getStringExtra("selectedTime")+":00")
-
-        } else if(requestCode == Const.REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            selectedDate = data!!.getStringExtra("selectedDate")
-            date_annonce!!.setText(selectedDate)
-
-        }  else if (requestCode == Const.REQUEST_CODE13 && resultCode == Activity.RESULT_OK) {
-            selectedDate2 = data!!.getStringExtra("selectedTime")
-            heure_darrivee!!.setText(data!!.getStringExtra("selectedTime")+":00")
-
-        }*/
     }
 
 }

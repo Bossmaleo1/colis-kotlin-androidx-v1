@@ -6,24 +6,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.Kcolis.android.R
 import com.Kcolis.android.adapter.NotificationAdapter
-import com.Kcolis.android.appviews.DetailsAnnonces
 import com.Kcolis.android.appviews.Itinerance
 import com.Kcolis.android.appviews.ItineranceValidation
 import com.Kcolis.android.model.Const
 import com.Kcolis.android.model.cache.SessionManager
 import com.Kcolis.android.model.dao.DatabaseHandler
-import com.Kcolis.android.model.data.Annonce
 import com.Kcolis.android.model.data.NotificationItem
 import com.Kcolis.android.utils.CustomRecyclerViewItemTouchListener
 import com.Kcolis.android.utils.MyApplication
@@ -44,7 +41,7 @@ class Notifications : Fragment() {
     private var data : ArrayList<NotificationItem>? = null
     private var swipeRefreshLayout : SwipeRefreshLayout? = null
     private var mShimmerViewContainer : ShimmerFrameLayout? = null
-    private var message_error : TextView? = null
+    private var message_error : LinearLayout? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,

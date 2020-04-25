@@ -37,7 +37,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:paddingTop="10dp"
-                android:src="@drawable/colis_1"
+                android:src="@mipmap/logo2"
                 android:layout_centerHorizontal="true"
                 />
 

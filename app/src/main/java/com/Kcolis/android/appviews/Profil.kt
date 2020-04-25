@@ -22,6 +22,7 @@ import com.Kcolis.android.model.dao.DatabaseHandler
 import com.Kcolis.android.model.data.User
 import com.facebook.drawee.view.SimpleDraweeView
 import com.google.android.material.appbar.CollapsingToolbarLayout
+import com.google.android.material.switchmaterial.SwitchMaterial
 import kotlinx.android.synthetic.main.connexion.*
 
 
@@ -40,6 +41,8 @@ class Profil : AppCompatActivity() {
     private var verification_piece_text: TextView? = null
     private var piece_identite_icon_failed: Drawable? = null
     private var block_notation: RelativeLayout? = null
+    private var switchDarkmode: SwitchMaterial? = null
+    private var darkmodeitem: String? = null
 
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -67,6 +70,7 @@ class Profil : AppCompatActivity() {
         collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar)
         mention_icon = findViewById(R.id.mention_icon)
         draweeView = findViewById(R.id.my_image_view)
+        switchDarkmode = findViewById(R.id.edit_modenuit)
         block_notation = findViewById(R.id.notationimage_block)
         collapsingToolbarLayout!!.title = user!!.PRENOM+" "+user!!.NOM
         collapsingToolbarLayout!!.setContentScrimColor(applicationContext.getColor(R.color.colorPrimary))
@@ -91,6 +95,20 @@ class Profil : AppCompatActivity() {
         verification_piece_text!!.text = "Faites verifier votre piece d'identite"
 
 
+        //On test le dark mode
+        darkmodeitem = database!!.getDARKMODE();
+        //si le dark mode est activé
+        if (darkmodeitem.equals("1"))
+        {
+            //setTheme(R.style.AppDarkTheme);
+            switchDarkmode!!.isChecked = true;
+            //DarkMode(maleoIcon);
+        } else if (dark_mode_item == "0") {
+            switchDarkmode!!.isChecked = false;
+            //LightMode(maleoIcon,savedInstanceState)
+        }
+
+
         piece_identite_block!!.setOnClickListener {
             val intent = Intent(applicationContext,VerificationPieceIdentite::class.java)
             startActivity(intent)
@@ -99,6 +117,12 @@ class Profil : AppCompatActivity() {
         block_notation!!.setOnClickListener {
             val intent = Intent(applicationContext,ListAvis::class.java)
             startActivity(intent)
+        }
+
+        //On change de mode
+        switchDarkmode!!.setOnClickListener{
+            darkmodeitem = database!!.getDARKMODE()
+
         }
 
     }
@@ -132,6 +156,27 @@ class Profil : AppCompatActivity() {
     }
 
     fun DarkMode(maleoIcon: Drawable) {
+        piece_identite_block!!.setBackgroundColor(getResources().getColor(R.color.darkprimary))
+
+        val actionbar = supportActionBar
+        maleoIcon.mutate().setColorFilter(getResources().getColor(R.color.darkprimary), PorterDuff.Mode.SRC_IN)
+        actionbar!!.setHomeAsUpIndicator(maleoIcon)
+        setTheme(R.style.AppDarkTheme)
+
+    }
+
+    fun LightMode(maleoIcon: Drawable) {
+        /*coordinatorLayout.setBackgroundColor(getResources().getColor(android.R.color.white))
+        name_block.setBackground(getResources().getDrawable(R.drawable.background_menu_message_public))
+        problematique_block.setBackground(getResources().getDrawable(R.drawable.background_menu_message_public))
+        langue_block.setBackground(getResources().getDrawable(R.drawable.background_menu_message_public))
+        modenuit_block.setBackground(getResources().getDrawable(R.drawable.background_menu_message_public))
+        global_block.setBackgroundColor(getResources().getColor(R.color.graycolor))
+        //on change la couleur de l'icone du back
+        maleoIcon.mutate().setColorFilter(Color.rgb(255, 255, 255), PorterDuff.Mode.SRC_IN)
+        this.getSupportActionBar().setHomeAsUpIndicator(maleoIcon)*/
+
+        setTheme(R.style.AppTheme);
 
     }
 
